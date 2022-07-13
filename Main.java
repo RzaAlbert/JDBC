@@ -30,7 +30,16 @@ public class Main {
         //QueryExecutor.executeQuery("INSERT INTO public.\"Pracownicy\"(\"USER_ID\", \"USER_NAME\", \"ACCOUNT_BALANCE\")VALUES (2, 'Piotr', 1000)");
 
 
-       
+        String update="UPDATE public.\"Pracownicy\" SET \"ACCOUNT_BALANCE\"=%d WHERE \"USER_NAME\"='%s'";
+
+        String albertUpdate=String.format(update,7000,"Albert");
+        String piotrUpdate=String.format(update,6000,"Piotr");
+
+
+        List <String> lista= Arrays.asList(albertUpdate,piotrUpdate);
+
+
+        MultiQueries.executeQueriesInOneTransaction(lista);
 
 
 
